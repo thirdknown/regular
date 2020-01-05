@@ -1,0 +1,23 @@
+{
+    "name": "thirdknown/regular",
+    "description": "Regular expression tools",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pavel Simek",
+            "email": "devp@devp.cz"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Thirdknown": "src/"
+        }
+    },
+    "require-dev": {
+        "tracy/tracy": "^2.7"
+    }
+}
