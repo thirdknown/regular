@@ -19,6 +19,7 @@
     },
     "require-dev": {
         "tracy/tracy": "^2.7",
-        "consolidation/robo": "^2.0"
+        "consolidation/robo": "^2.0",
+        "symplify/easy-coding-standard": "^7.2"
     }
 }
