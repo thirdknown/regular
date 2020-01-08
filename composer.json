@@ -21,6 +21,7 @@
         "tracy/tracy": "^2.7",
         "consolidation/robo": "^2.0",
         "symplify/easy-coding-standard": "^7.2",
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": "^8.5",
+        "phpstan/phpstan": "^0.12.4"
     }
 }

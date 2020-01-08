@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9636c331f5af31eda00e932cd14485b4",
+    "content-hash": "1dfcc3c16975330cd3e5b4d0a4c15f90",
     "packages": [],
     "packages-dev": [
         {
@@ -2137,6 +2137,45 @@
             ],
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "time": "2019-12-13T12:03:22+00:00"
+        },
+        {
+            "name": "phpstan/phpstan",
+            "version": "0.12.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "100a25ba8561223f6bf5a5ff4204f951c0ec007c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/100a25ba8561223f6bf5a5ff4204f951c0ec007c",
+                "reference": "100a25ba8561223f6bf5a5ff4204f951c0ec007c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "bin": [
+                "phpstan",
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.12-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan - PHP Static Analysis Tool",
+            "time": "2020-01-06T06:38:17+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -5522,7 +5561,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1.0"
+        "php": ">=7.2.0"
     },
     "platform-dev": []
 }
