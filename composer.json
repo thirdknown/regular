@@ -15,7 +15,13 @@
     "autoload": {
         "psr-0": {
             "Thirdknown": "src/"
-        }
+        },
+        "classmap": [
+            "tests/"
+        ],
+        "files": [
+            "tests/CompositeExpressionTest.php"
+        ]
     },
     "require-dev": {
         "tracy/tracy": "^2.7",
