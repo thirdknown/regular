@@ -38,7 +38,7 @@ class RoboFile extends \Robo\Tasks
     private function stopIfNotSuccessful(Result $result): void
     {
         if ($result->wasSuccessful() === false) {
-            exit;
+            exit($result->getExitCode());
         }
     }
 }
