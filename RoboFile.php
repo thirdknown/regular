@@ -16,6 +16,12 @@ class RoboFile extends \Robo\Tasks
 
         $this->stopIfNotSuccessful(
             $this
+                ->taskExec(__DIR__ . '/vendor/bin/phpstan analyse src tests examples')
+                ->run()
+        );
+
+        $this->stopIfNotSuccessful(
+            $this
                 ->taskPhpUnit(__DIR__ . '/vendor/bin/phpunit')
                 ->file(__DIR__ . '/tests')
                 ->run()
