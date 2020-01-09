@@ -23,7 +23,7 @@ use Thirdknown\Regular\Quantifier\QuestionMarkQuantifier;
 
 class CompositeExpressionTest extends TestCase
 {
-    public function testCompositeExpression(): void
+    public function testCompositeExpressionCommonBehavior(): void
     {
         $compositeExpressionWithExactlyQuantifier = new CompositeExpression();
         $slashDelimiter = new SlashDelimiter();
@@ -54,7 +54,7 @@ class CompositeExpressionTest extends TestCase
         $this->assertSame('+(name)*(surname){1,}, job position: [a-z]\d+', $compositeExpressionWithPlusQuantifier->__toString());
     }
 
-    public function testDelimiters(): void
+    public function testCompositeExpressionDelimiters(): void
     {
         $compositeExpressionWithSlashDelimiter = new CompositeExpression();
         $slashDelimiter = new SlashDelimiter();
@@ -82,7 +82,7 @@ class CompositeExpressionTest extends TestCase
         $this->assertSame('@expression@', $compositeExpressionWithCustomDelimiter->__toString());
     }
 
-    public function testSameDelimiters(): void
+    public function testCompositeExpressionSameDelimiters(): void
     {
         $this->expectException(CompositeExpressionMustHaveSameDelimitersException::class);
 
@@ -95,7 +95,7 @@ class CompositeExpressionTest extends TestCase
             ->addExpression($delimiter2);
     }
 
-    public function testUpToTwoDelimiters(): void
+    public function testCompositeExpressionUpToTwoDelimiters(): void
     {
         $this->expectException(CompositeExpressionMustHaveOnlyTwoDelimitersException::class);
 
@@ -108,7 +108,7 @@ class CompositeExpressionTest extends TestCase
             ->addExpression($delimiter);
     }
 
-    public function testTwoDelimiters(): void
+    public function testCompositeExpressionTwoDelimiters(): void
     {
         $this->expectException(CompositeExpressionMustHaveTwoDelimitersException::class);
 
