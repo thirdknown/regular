@@ -16,7 +16,7 @@ class RoboFile extends \Robo\Tasks
 
         $this->stopIfNotSuccessful(
             $this
-                ->taskExec(__DIR__ . '/vendor/bin/phpstan analyse --level=max src tests examples')
+                ->taskExec(__DIR__ . '/vendor/bin/phpstan analyse --level=8 src tests examples')
                 ->run()
         );
 
