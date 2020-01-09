@@ -59,13 +59,8 @@ class CompositeExpression implements CompositeExpressionInterface
      */
     private function getDelimiters(): array
     {
-        $delimiters = [];
-        foreach ($this->expressions as $expression) {
-            if ($expression instanceof DelimiterInterface) {
-                $delimiters[] = $expression;
-            }
-        }
-
-        return $delimiters;
+        return array_filter($this->expressions, function (ExpressionInterface $expression) {
+            return $expression instanceof DelimiterInterface;
+        });
     }
 }
