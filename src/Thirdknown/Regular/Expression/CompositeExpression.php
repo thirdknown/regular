@@ -36,7 +36,7 @@ class CompositeExpression implements CompositeExpressionInterface
 
     private function checkSameDelimiters(ExpressionInterface $currentlyBeingAddedExpression): void
     {
-        if (($currentlyBeingAddedExpression instanceof DelimiterInterface) === false) {
+        if (! $currentlyBeingAddedExpression instanceof DelimiterInterface) {
             return;
         }
 
