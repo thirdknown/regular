@@ -1,6 +1,6 @@
 {
     "name": "thirdknown/regular",
-    "description": "Regular expression tools",
+    "description": "PHP Regular expression tools",
     "type": "library",
     "license": "MIT",
     "authors": [
