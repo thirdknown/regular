@@ -11,6 +11,12 @@ class RoboFile extends \Robo\Tasks
     {
         $this->exitWithResultExitCodeIfNotSuccessful(
             $this
+                ->taskExec(__DIR__ . '/vendor/bin/parallel-lint --exclude app --exclude vendor .')
+                ->run()
+        );
+
+        $this->exitWithResultExitCodeIfNotSuccessful(
+            $this
                 ->taskExec(__DIR__ . '/vendor/bin/ecs check --config ./config/ecs.yaml .')
                 ->run()
         );
