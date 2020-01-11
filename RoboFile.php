@@ -39,9 +39,15 @@ class RoboFile extends \Robo\Tasks
 
     public function fixStandards(): void
     {
+        $fixStandardsTask = $this
+            ->taskExec(__DIR__ . '/vendor/bin/ecs check --config ./config/ecs.yaml --fix .');
+        $fixStandardsTask->run();
+
         $this
-            ->taskExec(__DIR__ . '/vendor/bin/ecs check --config ./config/ecs.yaml --fix .')
+            ->taskExec(__DIR__ . '/vendor/bin/rector process src --config ./config/rector.yaml')
             ->run();
+
+        $fixStandardsTask->run();
     }
 
     private function exitWithResultExitCodeIfNotSuccessful(Result $result): void
