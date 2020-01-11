@@ -59,7 +59,7 @@ class CompositeExpression implements CompositeExpressionInterface
      */
     private function getDelimiters(): array
     {
-        return array_filter($this->expressions, function (ExpressionInterface $expression) {
+        return array_filter($this->expressions, function (ExpressionInterface $expression): bool {
             return $expression instanceof DelimiterInterface;
         });
     }
