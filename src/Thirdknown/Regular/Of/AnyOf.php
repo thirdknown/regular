@@ -15,7 +15,9 @@ class AnyOf implements AnyOfInterface
 
     public function __toString(): string
     {
-        return '[' . implode('', $this->expressions) . ']';
+        return (new OpenSquareBracket())
+            . implode('', $this->expressions)
+            . (new CloseSquareBracket());
     }
 
     public function addExpression(ExpressionInterface $expression): self
