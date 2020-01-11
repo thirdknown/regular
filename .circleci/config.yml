@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-    build:
+    buildPhp72:
         docker:
             -   image: circleci/php:7.2-node-browsers
         working_directory: ~/regular
@@ -18,7 +18,7 @@ jobs:
                         - vendor
             -   run: ./runTests.sh
 
-    build73:
+    buildPhp73:
         docker:
             -   image: circleci/php:7.3-node-browsers
         working_directory: ~/regular
@@ -39,5 +39,5 @@ workflows:
     version: 2
     regular_workflow:
         jobs:
-            - build
-            - build73
+            - buildPhp72
+            - buildPhp73
