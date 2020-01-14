@@ -22,7 +22,7 @@ use Thirdknown\Regular\Quantifier\QuestionMarkQuantifier;
 
 class QuantifierTraitTest extends TestCase
 {
-    public function testAbbreviation(): void
+    public function testQuantifierTraitSimpleSet(): void
     {
         /** @var \Thirdknown\Regular\Quantifier\QuantifiableInterface $expressions */
         $expressions = [
