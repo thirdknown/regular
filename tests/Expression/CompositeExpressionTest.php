@@ -15,7 +15,7 @@ use Thirdknown\Regular\Exception\CompositeExpressionMustHaveOnlyTwoDelimitersExc
 use Thirdknown\Regular\Exception\CompositeExpressionMustHaveSameDelimitersException;
 use Thirdknown\Regular\Exception\CompositeExpressionMustHaveTwoDelimitersException;
 use Thirdknown\Regular\Expression\CompositeExpression;
-use Thirdknown\Regular\Expression\Expression;
+use Thirdknown\Regular\Expression\OneCharacterExpression;
 use Thirdknown\Regular\Quantifier\AsteriskQuantifier;
 use Thirdknown\Regular\Quantifier\ExactlyQuantifier;
 use Thirdknown\Regular\Quantifier\MinQuantifier;
@@ -30,7 +30,7 @@ class CompositeExpressionTest extends TestCase
         $compositeExpressionWithExactlyQuantifier
             ->addExpression($slashDelimiter)
             ->addExpression(new StartOfLine())
-            ->addExpression(new Expression('(name)'))
+            ->addExpression(new OneCharacterExpression('(name)'))
             ->addExpression(new ExactlyQuantifier(1))
             ->addExpression(new Dot())
             ->addExpression(new QuestionMarkQuantifier())
@@ -42,11 +42,11 @@ class CompositeExpressionTest extends TestCase
         $plusDelimiter = new PlusDelimiter();
         $compositeExpressionWithPlusQuantifier
             ->addExpression($plusDelimiter)
-            ->addExpression(new Expression('(name)'))
+            ->addExpression(new OneCharacterExpression('(name)'))
             ->addExpression(new AsteriskQuantifier())
-            ->addExpression(new Expression('(surname)'))
+            ->addExpression(new OneCharacterExpression('(surname)'))
             ->addExpression(new MinQuantifier(1))
-            ->addExpression(new Expression(', job position: [a-z]'))
+            ->addExpression(new OneCharacterExpression(', job position: [a-z]'))
             ->addExpression(new NumberCharacter())
             ->addExpression($plusDelimiter);
 
@@ -60,21 +60,21 @@ class CompositeExpressionTest extends TestCase
         $slashDelimiter = new SlashDelimiter();
         $compositeExpressionWithSlashDelimiter
             ->addExpression($slashDelimiter)
-            ->addExpression(new Expression('expression'))
+            ->addExpression(new OneCharacterExpression('expression'))
             ->addExpression($slashDelimiter);
 
         $compositeExpressionWithPlusDelimiter = new CompositeExpression();
         $plusDelimiter = new PlusDelimiter();
         $compositeExpressionWithPlusDelimiter
             ->addExpression($plusDelimiter)
-            ->addExpression(new Expression('expression'))
+            ->addExpression(new OneCharacterExpression('expression'))
             ->addExpression($plusDelimiter);
 
         $compositeExpressionWithCustomDelimiter = new CompositeExpression();
         $delimiter = new Delimiter('@');
         $compositeExpressionWithCustomDelimiter
             ->addExpression($delimiter)
-            ->addExpression(new Expression('expression'))
+            ->addExpression(new OneCharacterExpression('expression'))
             ->addExpression($delimiter);
 
         $this->assertSame('/expression/', $compositeExpressionWithSlashDelimiter->__toString());
@@ -91,7 +91,7 @@ class CompositeExpressionTest extends TestCase
         $delimiter2 = new Delimiter('@');
         $compositeExpressionWithNotSameDelimiters
             ->addExpression($delimiter1)
-            ->addExpression(new Expression('expression'))
+            ->addExpression(new OneCharacterExpression('expression'))
             ->addExpression($delimiter2);
     }
 
@@ -103,7 +103,7 @@ class CompositeExpressionTest extends TestCase
         $delimiter = new Delimiter('@');
         $compositeExpressionWithNotSameDelimiters
             ->addExpression($delimiter)
-            ->addExpression(new Expression('expression'))
+            ->addExpression(new OneCharacterExpression('expression'))
             ->addExpression($delimiter)
             ->addExpression($delimiter);
     }
@@ -116,7 +116,7 @@ class CompositeExpressionTest extends TestCase
         $delimiter = new Delimiter('@');
         $compositeExpressionWithNotSameDelimiters
             ->addExpression($delimiter)
-            ->addExpression(new Expression('expression'));
+            ->addExpression(new OneCharacterExpression('expression'));
 
         $compositeExpressionWithNotSameDelimiters->__toString();
     }

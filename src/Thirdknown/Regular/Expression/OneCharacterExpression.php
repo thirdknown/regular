@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Thirdknown\Regular\Expression;
 
-class Expression implements ExpressionInterface
+use Thirdknown\Regular\Exception\OneCharacterExpressionReceivesOnlyOneCharacterException;
+
+class OneCharacterExpression implements ExpressionInterface
 {
     /**
      * @var string
@@ -13,6 +15,10 @@ class Expression implements ExpressionInterface
 
     public function __construct(string $expression)
     {
+        if (strlen($expression) > 1) {
+            throw new OneCharacterExpressionReceivesOnlyOneCharacterException();
+        }
+
         $this->expression = $expression;
     }
 

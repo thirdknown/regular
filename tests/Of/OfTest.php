@@ -5,7 +5,7 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use Thirdknown\Regular\Abbreviation\NonWhitespaceCharacter;
 use Thirdknown\Regular\Abbreviation\NumberCharacter;
-use Thirdknown\Regular\Expression\Expression;
+use Thirdknown\Regular\Expression\OneCharacterExpression;
 use Thirdknown\Regular\Of\AnyOf;
 use Thirdknown\Regular\Of\CloseSquareBracket;
 use Thirdknown\Regular\Of\Dash;
@@ -21,8 +21,8 @@ class OfTest extends TestCase
         $anyOf = new AnyOf();
         $anyOf
             ->addExpression(new NonWhitespaceCharacter())
-            ->addExpression(new Expression('9'))
-            ->addExpression(new Expression('@'));
+            ->addExpression(new OneCharacterExpression('9'))
+            ->addExpression(new OneCharacterExpression('@'));
         $this->assertSame('[\S9@]', $anyOf->__toString());
     }
 
@@ -30,23 +30,23 @@ class OfTest extends TestCase
     {
         $noneOf = new NoneOf();
         $noneOf
-            ->addExpression(new Expression('d'))
+            ->addExpression(new OneCharacterExpression('d'))
             ->addExpression(new NumberCharacter())
-            ->addExpression(new Expression('f'));
+            ->addExpression(new OneCharacterExpression('f'));
         $this->assertSame('[^d\df]', $noneOf->__toString());
     }
 
     public function testRange(): void
     {
         $range = new Range(
-            new Expression('b'),
-            new Expression('p')
+            new OneCharacterExpression('b'),
+            new OneCharacterExpression('p')
         );
         $this->assertSame('b-p', $range->__toString());
 
         $numericRange = new Range(
-            new Expression('3'),
-            new Expression('7')
+            new OneCharacterExpression('3'),
+            new OneCharacterExpression('7')
         );
         $this->assertSame('3-7', $numericRange->__toString());
     }
