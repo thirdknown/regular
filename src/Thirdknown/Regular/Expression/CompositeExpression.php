@@ -34,6 +34,11 @@ class CompositeExpression implements CompositeExpressionInterface
         return $this;
     }
 
+    public static function create(): self
+    {
+        return new self();
+    }
+
     private function checkSameDelimiters(ExpressionInterface $currentlyBeingAddedExpression): void
     {
         if (! $currentlyBeingAddedExpression instanceof DelimiterInterface) {

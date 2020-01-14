@@ -20,4 +20,9 @@ class Expression implements ExpressionInterface
     {
         return $this->expression;
     }
+
+    public static function create(string $expression): self
+    {
+        return new self($expression);
+    }
 }

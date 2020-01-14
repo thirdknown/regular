@@ -32,4 +32,9 @@ class NoneOf implements AnyOfInterface, QuantifiableInterface
 
         return $this;
     }
+
+    public static function create(): self
+    {
+        return new self();
+    }
 }

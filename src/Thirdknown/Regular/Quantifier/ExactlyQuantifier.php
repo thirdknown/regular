@@ -20,4 +20,9 @@ class ExactlyQuantifier implements QuantifierInterface
     {
         return sprintf('{%s}', $this->exactly);
     }
+
+    public static function create(int $exactly): self
+    {
+        return new self($exactly);
+    }
 }

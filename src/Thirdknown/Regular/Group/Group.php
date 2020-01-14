@@ -40,4 +40,9 @@ class Group implements GroupInterface, QuantifiableInterface
     {
         return $this->addExpressionByExpressionInstance(new Expression($expression));
     }
+
+    public static function create(): self
+    {
+        return new self();
+    }
 }

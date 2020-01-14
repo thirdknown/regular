@@ -12,4 +12,9 @@ class SlashDelimiter implements DelimiterInterface
     {
         return self::EXPRESSION;
     }
+
+    public static function create(): self
+    {
+        return new self();
+    }
 }

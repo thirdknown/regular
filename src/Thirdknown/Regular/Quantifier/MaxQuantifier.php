@@ -20,4 +20,9 @@ class MaxQuantifier implements QuantifierInterface
     {
         return sprintf('{0,%s}', $this->max);
     }
+
+    public static function create(int $max): self
+    {
+        return new self($max);
+    }
 }

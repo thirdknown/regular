@@ -20,4 +20,9 @@ class Delimiter implements DelimiterInterface
     {
         return $this->delimiter;
     }
+
+    public static function create(string $delimiter): self
+    {
+        return new self($delimiter);
+    }
 }

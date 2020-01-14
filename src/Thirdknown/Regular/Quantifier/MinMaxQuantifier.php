@@ -26,4 +26,9 @@ class MinMaxQuantifier implements QuantifierInterface
     {
         return sprintf('{%s,%s}', $this->min, $this->max);
     }
+
+    public static function create(int $min, int $max): self
+    {
+        return new self($min, $max);
+    }
 }

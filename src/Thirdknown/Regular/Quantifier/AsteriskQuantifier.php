@@ -12,4 +12,9 @@ class AsteriskQuantifier implements QuantifierInterface
     {
         return self::EXPRESSION;
     }
+
+    public static function create(): self
+    {
+        return new self();
+    }
 }

@@ -20,4 +20,9 @@ class MinQuantifier implements QuantifierInterface
     {
         return sprintf('{%s,}', $this->min);
     }
+
+    public static function create(int $min): self
+    {
+        return new self($min);
+    }
 }

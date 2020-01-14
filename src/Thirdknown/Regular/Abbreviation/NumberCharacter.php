@@ -17,4 +17,9 @@ class NumberCharacter implements AbbreviationInterface, QuantifiableInterface
     {
         return self::EXPRESSION . ($this->getQuantifier() ?? '');
     }
+
+    public static function create(): self
+    {
+        return new self();
+    }
 }

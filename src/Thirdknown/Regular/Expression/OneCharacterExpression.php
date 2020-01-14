@@ -30,4 +30,9 @@ class OneCharacterExpression implements ExpressionInterface, QuantifiableInterfa
     {
         return $this->expression . ($this->getQuantifier() ?? '');
     }
+
+    public static function create(string $oneCharacter): self
+    {
+        return new self($oneCharacter);
+    }
 }

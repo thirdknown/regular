@@ -17,4 +17,9 @@ class NonWhitespaceCharacter implements AbbreviationInterface, QuantifiableInter
     {
         return self::EXPRESSION . ($this->getQuantifier() ?? '');
     }
+
+    public static function create(): self
+    {
+        return new self();
+    }
 }
