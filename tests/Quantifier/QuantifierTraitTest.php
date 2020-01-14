@@ -118,8 +118,8 @@ class QuantifierTraitTest extends TestCase
             '\d' => new NumberCharacter(),
             '(firstname|lastname)' =>
                 (new Group())
-                    ->addExpression(new Expression('firstname'))
-                    ->addExpression(new Expression('lastname')),
+                    ->addExpressionByExpressionInstance(new Expression('firstname'))
+                    ->addExpression('lastname'),
             '[c-p]' =>
                 (new AnyOf())
                     ->addExpression(

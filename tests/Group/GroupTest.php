@@ -16,9 +16,9 @@ class GroupTest extends TestCase
     {
         $group = new Group();
         $group
-            ->addExpression(new NumberCharacter())
-            ->addExpression(new Expression('c'))
-            ->addExpression(new Expression('#'));
+            ->addExpressionByExpressionInstance(new NumberCharacter())
+            ->addExpression('c')
+            ->addExpressionByExpressionInstance(new Expression('#'));
         $this->assertSame('(\d|c|#)', $group->__toString());
     }
 
