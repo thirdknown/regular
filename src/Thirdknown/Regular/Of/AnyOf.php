@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace Thirdknown\Regular\Of;
 
 use Thirdknown\Regular\Expression\ExpressionInterface;
+use Thirdknown\Regular\Quantifier\QuantifiableInterface;
+use Thirdknown\Regular\Quantifier\QuantifierTrait;
 
-class AnyOf implements AnyOfInterface
+class AnyOf implements AnyOfInterface, QuantifiableInterface
 {
+    use QuantifierTrait;
+
     /**
      * @var \Thirdknown\Regular\Expression\ExpressionInterface[]
      */
@@ -17,7 +21,8 @@ class AnyOf implements AnyOfInterface
     {
         return (new OpenSquareBracket())
             . implode('', $this->expressions)
-            . (new CloseSquareBracket());
+            . (new CloseSquareBracket())
+            . ($this->getQuantifier() ?? '');
     }
 
     public function addExpression(ExpressionInterface $expression): self

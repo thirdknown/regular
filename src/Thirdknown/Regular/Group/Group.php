@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace Thirdknown\Regular\Group;
 
 use Thirdknown\Regular\Expression\ExpressionInterface;
+use Thirdknown\Regular\Quantifier\QuantifiableInterface;
+use Thirdknown\Regular\Quantifier\QuantifierTrait;
 
-class Group implements GroupInterface
+class Group implements GroupInterface, QuantifiableInterface
 {
+    use QuantifierTrait;
+
     /**
      * @var \Thirdknown\Regular\Expression\ExpressionInterface[]
      */
@@ -20,7 +24,8 @@ class Group implements GroupInterface
                 (new VerticalBar())->__toString(),
                 $this->expressions
             )
-            . (new CloseRoundBracket());
+            . (new CloseRoundBracket())
+            . ($this->getQuantifier() ?? '');
     }
 
     public function addExpression(ExpressionInterface $expression): self

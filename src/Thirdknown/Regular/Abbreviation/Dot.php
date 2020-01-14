@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 namespace Thirdknown\Regular\Abbreviation;
 
-class Dot implements AbbreviationInterface
+use Thirdknown\Regular\Quantifier\QuantifiableInterface;
+use Thirdknown\Regular\Quantifier\QuantifierTrait;
+
+class Dot implements AbbreviationInterface, QuantifiableInterface
 {
+    use QuantifierTrait;
+
     public const EXPRESSION = '.';
 
     public function __toString(): string
     {
-        return self::EXPRESSION;
+        return self::EXPRESSION . ($this->getQuantifier() ?? '');
     }
 }
