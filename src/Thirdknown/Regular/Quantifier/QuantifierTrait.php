@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Thirdknown\Regular\Quantifier;
 
-use Thirdknown\Regular\Expression\ExpressionInterface;
-
 trait QuantifierTrait
 {
     /**
@@ -18,7 +16,10 @@ trait QuantifierTrait
         return $this->quantifier;
     }
 
-    public function setQuantifier(QuantifierInterface $quantifier): ExpressionInterface
+    /**
+     * @return $this
+     */
+    public function setQuantifier(QuantifierInterface $quantifier)
     {
         $this->quantifier = $quantifier;
 

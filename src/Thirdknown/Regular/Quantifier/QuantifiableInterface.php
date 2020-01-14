@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Thirdknown\Regular\Quantifier;
 
-use Thirdknown\Regular\Expression\ExpressionInterface;
-
 interface QuantifiableInterface
 {
-    public function setQuantifier(QuantifierInterface $quantifier): ExpressionInterface;
+    /**
+     * @return $this
+     */
+    public function setQuantifier(QuantifierInterface $quantifier);
 
     public function getQuantifier(): ?QuantifierInterface;
 }
