@@ -15,10 +15,10 @@ class NoneOf implements AnyOfInterface
 
     public function __toString(): string
     {
-        return '['
+        return (new OpenSquareBracket())
             . (new Negation())
             . implode('', $this->expressions)
-            . ']';
+            . (new CloseSquareBracket());
     }
 
     public function addExpression(ExpressionInterface $expression): self
