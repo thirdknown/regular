@@ -6,8 +6,6 @@ use PHPUnit\Framework\TestCase;
 use Thirdknown\Regular\Abbreviation\Dot;
 use Thirdknown\Regular\Abbreviation\NonWhitespaceCharacter;
 use Thirdknown\Regular\Abbreviation\NumberCharacter;
-use Thirdknown\Regular\Border\PlusDelimiter;
-use Thirdknown\Regular\Expression\CompositeExpression;
 use Thirdknown\Regular\Expression\Expression;
 use Thirdknown\Regular\Expression\OneCharacterExpression;
 use Thirdknown\Regular\Group\Group;
@@ -26,18 +24,11 @@ class QuantifierTraitTest extends TestCase
 {
     public function testAbbreviation(): void
     {
-        $plusDelimiter = new PlusDelimiter();
-
         /** @var \Thirdknown\Regular\Quantifier\QuantifiableInterface $expressions */
         $expressions = [
             '.' => new Dot(),
             '\S' => new NonWhitespaceCharacter(),
             '\d' => new NumberCharacter(),
-            '+asdf+' =>
-                (new CompositeExpression())
-                    ->addExpression($plusDelimiter)
-                    ->addExpression(new Expression('asdf'))
-                    ->addExpression($plusDelimiter),
             '(firstname|lastname)' =>
                 (new Group())
                     ->addExpression(new Expression('firstname'))
