@@ -9,6 +9,7 @@ use Thirdknown\Regular\Abbreviation\NumberCharacter;
 use Thirdknown\Regular\Border\PlusDelimiter;
 use Thirdknown\Regular\Expression\CompositeExpression;
 use Thirdknown\Regular\Expression\Expression;
+use Thirdknown\Regular\Expression\OneCharacterExpression;
 use Thirdknown\Regular\Group\Group;
 use Thirdknown\Regular\Of\AnyOf;
 use Thirdknown\Regular\Of\NoneOf;
@@ -53,6 +54,7 @@ class QuantifierTraitTest extends TestCase
                 (new NoneOf())
                     ->addExpression(new Expression('d'))
                     ->addExpression(new Expression('v')),
+            'e' => new OneCharacterExpression('e'),
         ];
 
         /** @var \Thirdknown\Regular\Quantifier\QuantifierInterface $quantifiers */

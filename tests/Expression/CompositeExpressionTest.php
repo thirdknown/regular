@@ -16,6 +16,7 @@ use Thirdknown\Regular\Exception\CompositeExpressionMustHaveSameDelimitersExcept
 use Thirdknown\Regular\Exception\CompositeExpressionMustHaveTwoDelimitersException;
 use Thirdknown\Regular\Expression\CompositeExpression;
 use Thirdknown\Regular\Expression\Expression;
+use Thirdknown\Regular\Expression\OneCharacterExpression;
 use Thirdknown\Regular\Quantifier\AsteriskQuantifier;
 use Thirdknown\Regular\Quantifier\ExactlyQuantifier;
 use Thirdknown\Regular\Quantifier\MinQuantifier;
@@ -32,6 +33,7 @@ class CompositeExpressionTest extends TestCase
             ->addExpression(new StartOfLine())
             ->addExpression(new Expression('(name)'))
             ->addExpression(new ExactlyQuantifier(1))
+            ->addExpression(new OneCharacterExpression('7'))
             ->addExpression(new Dot())
             ->addExpression(new QuestionMarkQuantifier())
             ->addExpression(new NonWhitespaceCharacter())
@@ -50,7 +52,7 @@ class CompositeExpressionTest extends TestCase
             ->addExpression(new NumberCharacter())
             ->addExpression($plusDelimiter);
 
-        $this->assertSame('/^(name){1}.?\S$/', $compositeExpressionWithExactlyQuantifier->__toString());
+        $this->assertSame('/^(name){1}7.?\S$/', $compositeExpressionWithExactlyQuantifier->__toString());
         $this->assertSame('+(name)*(surname){1,}, job position: [a-z]\d+', $compositeExpressionWithPlusQuantifier->__toString());
     }
 
