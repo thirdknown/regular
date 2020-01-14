@@ -24,8 +24,95 @@ class QuantifierTraitTest extends TestCase
 {
     public function testQuantifierTraitSimpleSet(): void
     {
-        /** @var \Thirdknown\Regular\Quantifier\QuantifiableInterface $expressions */
-        $expressions = [
+        /** @var \Thirdknown\Regular\Quantifier\QuantifierInterface $quantifiers */
+        $quantifiers = [
+            '*' => new AsteriskQuantifier(),
+            '{9}' => new ExactlyQuantifier(9),
+            '{0,4}' => new MaxQuantifier(4),
+            '{11,25}' => new MinMaxQuantifier(11, 25),
+            '{7,}' => new MinQuantifier(7),
+            '+' => new PlusQuantifier(),
+            '?' => new QuestionMarkQuantifier(),
+        ];
+
+        /**
+         * @var string
+         * @var \Thirdknown\Regular\Quantifier\QuantifiableInterface $expression
+         */
+        foreach ($this->getExpressions() as $expressionStringReprezentation => $expression) {
+
+            /**
+             * @var string
+             * @var \Thirdknown\Regular\Quantifier\QuantifierInterface  $quantifier
+             */
+            foreach ($quantifiers as $quantifierTextReprezentation => $quantifier) {
+                $this->assertSame(
+                    $expressionStringReprezentation . $quantifierTextReprezentation,
+                    (clone $expression)->setQuantifier((clone $quantifier))->__toString()
+                );
+            }
+        }
+    }
+
+    public function testQuantifierTraitAdvancedSet(): void
+    {
+        /**
+         * @var string
+         * @var \Thirdknown\Regular\Quantifier\QuantifiableInterface $expression
+         */
+        foreach ($this->getExpressions() as $expressionStringReprezentation => $expression) {
+            $this->assertSame(
+                $expressionStringReprezentation . '*',
+                (clone $expression)->setFromZeroToInfinityQuantifier()->__toString()
+            );
+
+            $this->assertSame(
+                $expressionStringReprezentation . '+',
+                (clone $expression)->setFromOneToInfinityQuantifier()->__toString()
+            );
+
+            $this->assertSame(
+                $expressionStringReprezentation . '?',
+                (clone $expression)->setFromZeroToOneQuantifier()->__toString()
+            );
+
+            $this->assertSame(
+                $expressionStringReprezentation . '{17,}',
+                (clone $expression)->setMinQuantifier(17)->__toString()
+            );
+
+            $this->assertSame(
+                $expressionStringReprezentation . '{33,74}',
+                (clone $expression)->setMinMaxQuantifier(33, 74)->__toString()
+            );
+
+            $this->assertSame(
+                $expressionStringReprezentation . '{0,29}',
+                (clone $expression)->setMaxQuantifier(29)->__toString()
+            );
+
+            $this->assertSame(
+                $expressionStringReprezentation . '{92}',
+                (clone $expression)->setExactlyQuantifier(92)->__toString()
+            );
+
+            $this->assertSame(
+                $expressionStringReprezentation . '?',
+                (clone $expression)
+                    ->setMinQuantifier(41)
+                    ->setFromZeroToInfinityQuantifier()
+                    ->setFromZeroToOneQuantifier()
+                    ->__toString()
+            );
+        }
+    }
+
+    /**
+     * @return \Thirdknown\Regular\Quantifier\QuantifiableInterface[]
+     */
+    private function getExpressions(): array
+    {
+        return [
             '.' => new Dot(),
             '\S' => new NonWhitespaceCharacter(),
             '\d' => new NumberCharacter(),
@@ -47,34 +134,5 @@ class QuantifierTraitTest extends TestCase
                     ->addExpression(new Expression('v')),
             'e' => new OneCharacterExpression('e'),
         ];
-
-        /** @var \Thirdknown\Regular\Quantifier\QuantifierInterface $quantifiers */
-        $quantifiers = [
-            '*' => new AsteriskQuantifier(),
-            '{9}' => new ExactlyQuantifier(9),
-            '{0,4}' => new MaxQuantifier(4),
-            '{11,25}' => new MinMaxQuantifier(11, 25),
-            '{7,}' => new MinQuantifier(7),
-            '+' => new PlusQuantifier(),
-            '?' => new QuestionMarkQuantifier(),
-        ];
-
-        /**
-         * @var string
-         * @var \Thirdknown\Regular\Quantifier\QuantifiableInterface $expression
-         */
-        foreach ($expressions as $expressionStringReprezentation => $expression) {
-
-            /**
-             * @var string
-             * @var \Thirdknown\Regular\Quantifier\QuantifierInterface  $quantifier
-             */
-            foreach ($quantifiers as $quantifierTextReprezentation => $quantifier) {
-                $this->assertSame(
-                    $expressionStringReprezentation . $quantifierTextReprezentation,
-                    (clone $expression)->setQuantifier((clone $quantifier))->__toString()
-                );
-            }
-        }
     }
 }
