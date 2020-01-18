@@ -122,7 +122,7 @@ class QuantifierTraitTest extends TestCase
                     ->addExpression('lastname'),
             '[c-p]' =>
                 (new AnyOf())
-                    ->addExpression(
+                    ->addExpressionByInstance(
                         new Range(
                             new Expression('c'),
                             new Expression('p')
@@ -130,8 +130,8 @@ class QuantifierTraitTest extends TestCase
                     ),
             '[^dv]' =>
                 (new NoneOf())
-                    ->addExpression(new Expression('d'))
-                    ->addExpression(new Expression('v')),
+                    ->addExpressionByInstance(new Expression('d'))
+                    ->addExpressionByInstance(new Expression('v')),
             'e' => new OneCharacterExpression('e'),
         ];
     }

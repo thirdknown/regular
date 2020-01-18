@@ -20,19 +20,53 @@ class OfTest extends TestCase
     {
         $anyOf = new AnyOf();
         $anyOf
-            ->addExpression(new NonWhitespaceCharacter())
-            ->addExpression(new Expression('9'))
-            ->addExpression(new Expression('@'));
+            ->addExpressionByInstance(new NonWhitespaceCharacter())
+            ->addExpressionByInstance(new Expression('9'))
+            ->addExpressionByInstance(new Expression('@'));
         $this->assertSame('[\S9@]', $anyOf->__toString());
+    }
+
+    public function testAnyOfRange(): void
+    {
+        $anyOf = AnyOf::create()
+            ->addRange('c', 'e');
+        $this->assertSame('[c-e]', $anyOf->__toString());
+    }
+
+    public function testAnyOfOneCharacter(): void
+    {
+        $anyOf = AnyOf::create()
+            ->addOneCharacter('b')
+            ->addOneCharacter('p')
+            ->addOneCharacter('9')
+            ->addOneCharacter('x');
+        $this->assertSame('[bp9x]', $anyOf->__toString());
+    }
+
+    public function testNoneOfRange(): void
+    {
+        $anyOf = NoneOf::create()
+            ->addRange('c', 'e');
+        $this->assertSame('[^c-e]', $anyOf->__toString());
+    }
+
+    public function testNoneOfOneCharacter(): void
+    {
+        $anyOf = NoneOf::create()
+            ->addOneCharacter('b')
+            ->addOneCharacter('p')
+            ->addOneCharacter('9')
+            ->addOneCharacter('x');
+        $this->assertSame('[^bp9x]', $anyOf->__toString());
     }
 
     public function testNoneOf(): void
     {
         $noneOf = new NoneOf();
         $noneOf
-            ->addExpression(new Expression('d'))
-            ->addExpression(new NumberCharacter())
-            ->addExpression(new Expression('f'));
+            ->addExpressionByInstance(new Expression('d'))
+            ->addExpressionByInstance(new NumberCharacter())
+            ->addExpressionByInstance(new Expression('f'));
         $this->assertSame('[^d\df]', $noneOf->__toString());
     }
 
