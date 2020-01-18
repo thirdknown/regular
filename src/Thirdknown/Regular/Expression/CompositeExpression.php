@@ -8,6 +8,8 @@ use Thirdknown\Regular\Border\DelimiterInterface;
 use Thirdknown\Regular\Exception\CompositeExpressionMustHaveOnlyTwoDelimitersException;
 use Thirdknown\Regular\Exception\CompositeExpressionMustHaveSameDelimitersException;
 use Thirdknown\Regular\Exception\CompositeExpressionMustHaveTwoDelimitersException;
+use Thirdknown\Regular\Group\GroupInterface;
+use Thirdknown\Regular\Of\AnyOfInterface;
 
 class CompositeExpression implements CompositeExpressionInterface
 {
@@ -32,6 +34,21 @@ class CompositeExpression implements CompositeExpressionInterface
         $this->expressions[] = $expression;
 
         return $this;
+    }
+
+    public function addGroup(GroupInterface $group): CompositeExpressionInterface
+    {
+        return $this->addExpression($group);
+    }
+
+    public function addAnyOf(AnyOfInterface $anyOf): CompositeExpressionInterface
+    {
+        return $this->addExpression($anyOf);
+    }
+
+    public function addNoneOf(AnyOfInterface $noneOf): CompositeExpressionInterface
+    {
+        return $this->addExpression($noneOf);
     }
 
     public static function create(): self
