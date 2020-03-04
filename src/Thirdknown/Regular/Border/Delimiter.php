@@ -6,10 +6,7 @@ namespace Thirdknown\Regular\Border;
 
 class Delimiter implements DelimiterInterface
 {
-    /**
-     * @var string
-     */
-    private $delimiter;
+    private string $delimiter;
 
     public function __construct(string $delimiter)
     {

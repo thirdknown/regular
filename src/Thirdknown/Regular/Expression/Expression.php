@@ -6,10 +6,7 @@ namespace Thirdknown\Regular\Expression;
 
 class Expression implements ExpressionInterface
 {
-    /**
-     * @var string
-     */
-    private $expression;
+    private string $expression;
 
     public function __construct(string $expression)
     {

@@ -6,10 +6,7 @@ namespace Thirdknown\Regular\Quantifier;
 
 class ExactlyQuantifier implements QuantifierInterface
 {
-    /**
-     * @var int
-     */
-    private $exactly;
+    private int $exactly;
 
     public function __construct(int $exactly)
     {

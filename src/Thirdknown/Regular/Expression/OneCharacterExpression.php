@@ -12,10 +12,7 @@ class OneCharacterExpression implements ExpressionInterface, QuantifiableInterfa
 {
     use QuantifierTrait;
 
-    /**
-     * @var string
-     */
-    private $expression;
+    private string $expression;
 
     public function __construct(string $oneCharacter)
     {

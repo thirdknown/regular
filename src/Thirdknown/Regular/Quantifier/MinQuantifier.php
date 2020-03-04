@@ -6,10 +6,7 @@ namespace Thirdknown\Regular\Quantifier;
 
 class MinQuantifier implements QuantifierInterface
 {
-    /**
-     * @var int
-     */
-    private $min;
+    private int $min;
 
     public function __construct(int $min)
     {

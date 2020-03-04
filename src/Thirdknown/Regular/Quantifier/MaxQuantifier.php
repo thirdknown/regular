@@ -6,10 +6,7 @@ namespace Thirdknown\Regular\Quantifier;
 
 class MaxQuantifier implements QuantifierInterface
 {
-    /**
-     * @var int
-     */
-    private $max;
+    private int $max;
 
     public function __construct(int $max)
     {

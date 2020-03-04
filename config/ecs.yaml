@@ -2,7 +2,6 @@ parameters:
   sets:
     - 'clean-code'
     - 'psr12'
-    - 'common'
     - 'php70'
     - 'php71'
     - 'dead-code'

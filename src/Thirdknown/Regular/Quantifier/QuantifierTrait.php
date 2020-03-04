@@ -6,10 +6,7 @@ namespace Thirdknown\Regular\Quantifier;
 
 trait QuantifierTrait
 {
-    /**
-     * @var \Thirdknown\Regular\Quantifier\QuantifierInterface
-     */
-    private $quantifier;
+    private ?QuantifierInterface $quantifier = null;
 
     public function getQuantifier(): ?QuantifierInterface
     {

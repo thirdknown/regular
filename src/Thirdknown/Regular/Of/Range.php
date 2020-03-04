@@ -8,15 +8,9 @@ use Thirdknown\Regular\Expression\ExpressionInterface;
 
 class Range implements AnyOfInterface
 {
-    /**
-     * @var \Thirdknown\Regular\Expression\ExpressionInterface
-     */
-    private $first;
+    private ExpressionInterface $first;
 
-    /**
-     * @var \Thirdknown\Regular\Expression\ExpressionInterface
-     */
-    private $last;
+    private ExpressionInterface $last;
 
     public function __construct(ExpressionInterface $first, ExpressionInterface $last)
     {

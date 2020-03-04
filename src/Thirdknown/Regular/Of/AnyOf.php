@@ -16,7 +16,7 @@ class AnyOf implements AnyOfInterface, QuantifiableInterface
     /**
      * @var \Thirdknown\Regular\Expression\ExpressionInterface[]
      */
-    private $expressions = [];
+    private array $expressions = [];
 
     public function __toString(): string
     {
@@ -37,7 +37,8 @@ class AnyOf implements AnyOfInterface, QuantifiableInterface
     {
         return $this->addExpressionByInstance(
             new Range(
-                new OneCharacterExpression($first), new OneCharacterExpression($last)
+                new OneCharacterExpression($first),
+                new OneCharacterExpression($last)
             )
         );
     }

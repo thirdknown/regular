@@ -16,7 +16,7 @@ class Group implements GroupInterface, QuantifiableInterface
     /**
      * @var \Thirdknown\Regular\Expression\ExpressionInterface[]
      */
-    private $expressions = [];
+    private array $expressions = [];
 
     public function __toString(): string
     {

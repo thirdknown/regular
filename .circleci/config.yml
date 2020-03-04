@@ -1,26 +1,9 @@
 version: 2.1
 
 jobs:
-    buildPhp72:
+    buildPhp74:
         docker:
-            -   image: circleci/php:7.2-node-browsers
-        working_directory: ~/regular
-        steps:
-            - checkout
-            -   run: sudo composer self-update
-            -   restore_cache:
-                    keys:
-                        - composer-v1-{{ checksum "composer.lock" }}
-            -   run: composer install -n --dev
-            -   save_cache:
-                    key: composer-v1-{{ checksum "composer.lock" }}
-                    paths:
-                        - vendor
-            -   run: ./runTests.sh
-
-    buildPhp73:
-        docker:
-            -   image: circleci/php:7.3-node-browsers
+            -   image: circleci/php:7.4-node-browsers
         working_directory: ~/regular
         steps:
             - checkout
@@ -39,5 +22,4 @@ workflows:
     version: 2
     regular_workflow:
         jobs:
-            - buildPhp72
-            - buildPhp73
+            - buildPhp74

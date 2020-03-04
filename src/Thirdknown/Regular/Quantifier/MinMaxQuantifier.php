@@ -6,15 +6,9 @@ namespace Thirdknown\Regular\Quantifier;
 
 class MinMaxQuantifier implements QuantifierInterface
 {
-    /**
-     * @var int
-     */
-    private $min;
+    private int $min;
 
-    /**
-     * @var int
-     */
-    private $max;
+    private int $max;
 
     public function __construct(int $min, int $max)
     {

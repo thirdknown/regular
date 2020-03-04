@@ -16,7 +16,7 @@ class CompositeExpression implements CompositeExpressionInterface
     /**
      * @var \Thirdknown\Regular\Expression\ExpressionInterface[]
      */
-    private $expressions = [];
+    private array $expressions = [];
 
     public function __toString(): string
     {
@@ -58,7 +58,7 @@ class CompositeExpression implements CompositeExpressionInterface
 
     private function checkSameDelimiters(ExpressionInterface $currentlyBeingAddedExpression): void
     {
-        if (! $currentlyBeingAddedExpression instanceof DelimiterInterface) {
+        if (!$currentlyBeingAddedExpression instanceof DelimiterInterface) {
             return;
         }
 
@@ -77,12 +77,13 @@ class CompositeExpression implements CompositeExpressionInterface
     }
 
     /**
-     * @return \Thirdknown\Regular\Border\DelimiterInterface[]
+     * @return \Thirdknown\Regular\Expression\ExpressionInterface[]
      */
     private function getDelimiters(): array
     {
-        return array_filter($this->expressions, function (ExpressionInterface $expression): bool {
-            return $expression instanceof DelimiterInterface;
-        });
+        return array_filter(
+            $this->expressions,
+            fn (ExpressionInterface $expression): bool => $expression instanceof DelimiterInterface
+        );
     }
 }
